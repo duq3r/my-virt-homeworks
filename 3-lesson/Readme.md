@@ -25,7 +25,7 @@ Hey, Netology
 ```
 Опубликуйте созданный форк в своем репозитории и предоставьте ответ в виде ссылки на https://hub.docker.com/username_repo.
 
-#Ответ <br>
+## Ответ <br>
 https://hub.docker.com/repository/docker/duq3r/my-webserver
 
 ## Задача 2
@@ -64,7 +64,7 @@ https://hub.docker.com/repository/docker/duq3r/my-webserver
 - Добавьте еще один файл в папку ```/data``` на хостовой машине;
 - Подключитесь во второй контейнер и отобразите листинг и содержание файлов в ```/data``` контейнера.
 
-#Ответ <br>
+## Ответ <br>
 vagrant@server1:~/data$ ls
 111.test
 vagrant@server1:~/data$ docker run -it --rm -d -v /home/vagrant/data:/data --name centos centos
@@ -105,7 +105,7 @@ root@dd98beedce72:/data# ls
 
 Соберите Docker образ с Ansible, загрузите на Docker Hub и пришлите ссылку вместе с остальными ответами к задачам.
 
-#Ответ
+## Ответ <br>
 https://hub.docker.com/repository/docker/duq3r/ansible
 ---
 
