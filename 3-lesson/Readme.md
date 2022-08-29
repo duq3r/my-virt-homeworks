@@ -98,7 +98,6 @@ root@dd98beedce72:/# cd /data
 root@dd98beedce72:/data# ls
 111.test  222.test  333.test
 
-
 ## Задача 4 (*)
 
 Воспроизвести практическую часть лекции самостоятельно.
