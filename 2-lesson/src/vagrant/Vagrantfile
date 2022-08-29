@@ -14,6 +14,8 @@ servers = [
     :ip => NET + "11",
     :ssh_host => "20011",
     :ssh_vm => "22",
+    :nginx_host => "8080",
+    :nginx_vm => "80",
     :ram => 1024,
     :core => 1
   }
@@ -22,19 +24,22 @@ servers = [
 
 Vagrant.configure(2) do |config|
 
-  config.vm.synced_folder ".", "/vagrant", disabled: false
+  config.vm.synced_folder "H:\\data\\devops-netology\\virtualization", "/vagrant", disabled: false
   servers.each do |machine|
     config.vm.define machine[:hostname] do |node|
       node.vm.box = ISO
       node.vm.hostname = machine[:hostname]
       node.vm.network "private_network", ip: machine[:ip]
+ 
       node.vm.network :forwarded_port, guest: machine[:ssh_vm], host: machine[:ssh_host]
+      node.vm.network :forwarded_port, guest: machine[:nginx_vm], host: machine[:nginx_host]
       node.vm.provider "virtualbox" do |vb|
         vb.customize ["modifyvm", :id, "--memory", machine[:ram]]
         vb.customize ["modifyvm", :id, "--cpus", machine[:core]]
         vb.name = machine[:hostname]
       end
-
+      node.vm.network "public_network"
+      node.vm.provision "shell", run: "always", inline: "/sbin/dhclient -r eth2; /sbin/route del default; /sbin/dhclient eth2"
      
         provisioner =  Vagrant::Util::Platform.windows? ? :guest_ansible : :ansible
 
