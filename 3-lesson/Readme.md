@@ -65,6 +65,8 @@ https://hub.docker.com/repository/docker/duq3r/my-webserver
 - Подключитесь во второй контейнер и отобразите листинг и содержание файлов в ```/data``` контейнера.
 
 ## Ответ <br>
+```text/x-sh
+
 vagrant@server1:~/data$ ls
 111.test
 vagrant@server1:~/data$ docker run -it --rm -d -v /home/vagrant/data:/data --name centos centos
@@ -97,7 +99,7 @@ vagrant@server1:~/data$ docker exec -it debian /bin/bash
 root@dd98beedce72:/# cd /data
 root@dd98beedce72:/data# ls
 111.test  222.test  333.test
-
+```
 
 ## Задача 4 (*)
 
