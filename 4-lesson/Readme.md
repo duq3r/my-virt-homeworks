@@ -9,7 +9,7 @@
   
   ## Ответ <br>
   <p align="center">
-  <img width="1500" height="200" src="./screens/1.png">
+  <img width="1500" height="300" src="./screens/1.png">
 </p>
 
 ## Задача 2
