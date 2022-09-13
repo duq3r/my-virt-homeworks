@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:12
+    environment:
+      POSTGRES_DB: "habrdb"
+      POSTGRES_USER: "habrpguser"
+      POSTGRES_PASSWORD: "pgpwd4habr"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - vol1:/var/lib/postgresql/data
+      - vol2:/var/lib/postgresql
+    ports:
+      - "5432:5432"
