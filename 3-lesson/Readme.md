@@ -78,7 +78,7 @@ CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS  
 dd98beedce72   debian         "bash"                   3 seconds ago    Up 2 seconds                         debian
 c7134aa4a438   centos         "/bin/bash"              12 seconds ago   Up 11 seconds                        centos
 6d6c4dfd25bf   my-webserver   "/docker-entrypoint.…"   5 hours ago      Up 5 hours      0.0.0.0:80->80/tcp   my-web
-vagrant@server1:~/data$ docker exec -it centos /bin/bash
+vagrant@server1:~/data$ 
 [root@c7134aa4a438 /]# cd /data
 [root@c7134aa4a438 data]# ls
 111.test
