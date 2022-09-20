@@ -45,20 +45,11 @@ Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 12
 Server version: 8.0.30 MySQL Community Server - GPL
 
-Copyright (c) 2000, 2022, Oracle and/or its affiliates.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
 mysql>
 
 ```
 Статус БД:
 ```
-
 mysql> \s
 --------------
 mysql  Ver 8.0.30 for Linux on x86_64 (MySQL Community Server - GPL)
@@ -87,7 +78,16 @@ Threads: 2  Questions: 48  Slow queries: 0  Opens: 176  Flush tables: 3  Open ta
 mysql> 
 ```
 Импорт дампа выполнил в DBeaver. Предварительно выполнив 
-mysql> CREATE DATABASE test_
+mysql> CREATE DATABASE test_db
+```
+id|title                |price|
+--+---------------------+-----+
+ 1|War and Peace        |  100|
+ 2|My little pony       |  500|
+ 3|Adventure mysql times|  300|
+ 4|Server gravity falls |  300|
+ 5|Log gossips          |  123|
+```
 
 Вывод числа позиций дороже 300.
 ~~~
@@ -225,7 +225,7 @@ secure-file-priv= NULL
 #Set IO Speed
 # 0 - скорость
 # 1 - сохранность
-# 2 - универсальный параметр
+# 2 - что-то среднее
 innodb_flush_log_at_trx_commit = 0 
 
 #Set compression
