@@ -25,26 +25,43 @@
 В следующих заданиях мы будем продолжать работу с данным контейнером.
 
 ## Ответ <br>
-```
-02:41:49 vagrant@server1:[~/.ssh]:
-$ > docker pull mysql:8.0
-8.0: Pulling from library/mysql
-Digest: sha256:b9532b1edea72b6cee12d9f5a78547bd3812ea5db842566e17f8b33291ed2921
-Status: Downloaded newer image for mysql:8.0
-docker.io/library/mysql:8.0
-02:42:54 vagrant@server1:[~/.ssh]:
-$ > docker volume create vol_mysql
-vol_mysql
-02:43:34 vagrant@server1:[~/.ssh]:
-$ > docker run --rm --name mysql-docker -e MYSQL_ROOT_PASSWORD=mysql -d -p 3306:3306 -v vol_mysql:/etc/mysql/ mysql:8.0
-08:06:03 vagrant@server1:[~]:
-$ > docker exec -it mysql-docker bash
-bash-4.4# mysql -p
-Enter password:
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 12
-Server version: 8.0.30 MySQL Community Server - GPL
+~~~
+#Docker-compose.yaml
+version: '3.3'
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'test_db'
+      MYSQL_ROOT_PASSWORD: 'mysql'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Открываем 3306 порт на контейнере
+      - '3306'
+      # volume, где будут храниться данные
+    volumes:
+      - vol_mysql:/etc/mysql
+# Имя нашего vulume
+volumes:
+  vol_mysql:
 
+Запускаю Docker-compose:
+$ > docker-compose up -d
+Starting 6-03-lesson_db_1 ... done
+10:54:15 vagrant@server1:[/vagrant/6-03-lesson(main)]:
+$ > docker ps
+CONTAINER ID   IMAGE       COMMAND                  CREATED         STATUS         PORTS                               NAMES
+b2aa84dd85df   mysql:8.0   "docker-entrypoint.s…"   4 minutes ago   Up 8 seconds   0.0.0.0:3306->3306/tcp, 33060/tcp   6-03-lesson_db_1
+~~~
+```
+Запускаю консольный mysql в контейнере:
+06:16:53 vagrant@server1:[/vagrant/6-03-lesson(main)]:
+$ > docker exec -it 6-03-lesson_db_1 mysql -p
+Enter password:
+.....
 mysql>
 
 ```
@@ -228,10 +245,6 @@ secure-file-priv= NULL
 # 2 - что-то среднее
 innodb_flush_log_at_trx_commit = 0 
 
-#Set compression
-# Barracuda - формат файла с сжатием
-innodb_file_format=Barracuda
-
 #Set buffer
 innodb_log_buffer_size	= 1M
 
@@ -240,6 +253,9 @@ key_buffer_size = 640М
 
 #Set log size
 max_binlog_size	= 100M
+
+# Наш конфиг надо класть по этому пути
+!includedir /etc/mysql/conf.d/
 ~~~
 
 ---
