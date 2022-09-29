@@ -7,7 +7,7 @@ terraform {
   }
   required_version = ">= 0.13"
 }
-
+#нужно сгенерировать yc iam key create --service-account-name yacloud --output key.json
 provider "yandex" {
   service_account_key_file = "key.json"
   cloud_id  = "${var.yandex_cloud_id}"

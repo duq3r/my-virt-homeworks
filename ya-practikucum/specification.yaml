@@ -1,0 +1,53 @@
+name: my-group
+service_account_id: aje6bec9b4om2vdt84ef
+ 
+instance_template:
+    platform_id: standard-v1
+    resources_spec:
+        memory: 2g
+        cores: 2
+    boot_disk_spec:
+        mode: READ_WRITE
+        disk_spec:
+            image_id: fd84mkdsoa6phtk3l5b2 
+            type_id: network-hdd
+            size: 32g
+    network_interface_specs:
+        - network_id: enp12ds669sg0updl0n9
+          subnet_ids: 
+            - e9bqm8hqd70het3f74hb
+            - e2lm4mvma5c1t7rmo420
+            - b0ckj689qr9mqgpn79hl 
+          primary_v4_address_spec: { one_to_one_nat_spec: { ip_version: IPV4 }}
+    scheduling_policy:
+        preemptible: false
+    metadata:
+      user-data: |-
+        #cloud-config
+          users:
+            - name: yacloud
+              groups: sudo
+              lock_passwd: true
+              sudo: 'ALL=(ALL) NOPASSWD:ALL'
+              ssh-authorized-keys:
+                - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCuNCNAhaGUMWJF5fzSfM9D1qIXz9IycmfqHpMBe+8ebm6FuZ5Ux97/+T/8t36m2er1t37A4fgoC8T6ToiST0YOh+CtoBCU1o1oqMAEn1S47lsHBS0vQ1rFiUTsPyi9IyvUlIp0YZM/SbkEZha5Xl9Gvyio8ds5e0duB8k6XO/fAaffBdBhf8ByIaQccY0yMZr0+pfn1i2ocqYc1/KSK1ePWiJ9+fsrHKJxwZOA3KnMbsg38uf9SdLU86uNP7/ab4U6HOjV6/XRa5eG1LqMSfCgSFyvTbBtEq4BOeL11UgRvOmsN6Lmg1rPxII3M/F7Jfph53/YPvPuK20Reg/tVjl+/HqSjFCVqigu+WILnWDyyHN4CGJV1trSlFTGp6UZ1BlZ9DlX/+LO3Us5hvbb4KaSNgNtLpzm7poTWJ7DD7f4XwwAOAjhhcw/4tY3VaJ9oNBTBY69rqUJwp65of5hJ3WXoK2A9PlNxIJztO6qPKpi28kqSdIXDSegeyv+fJeqUoU=
+          package_update: true
+          runcmd:
+            - [ apt-get, install, -y, nginx ]
+            - [/bin/bash, -c, 'source /etc/lsb-release; sed -i "s/Welcome to nginx/It is $(hostname) on $DISTRIB_DESCRIPTION/" /var/www/html/index.nginx-debian.html']
+ 
+deploy_policy:
+    max_unavailable: 0
+    max_expansion: 1
+scale_policy:
+    fixed_scale:
+        size: 3
+allocation_policy:
+    zones:
+        - zone_id: ru-central1-a
+        - zone_id: ru-central1-b
+        - zone_id: ru-central1-c
+ 
+load_balancer_spec:
+    target_group_spec:
+        name: my-target-group 
