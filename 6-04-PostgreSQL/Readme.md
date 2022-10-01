@@ -156,6 +156,10 @@ INSERT 0 8
 test_database=# 
 ~~~
 При начальном проектировании таблиц можно было сразу сделать её секционной, тогда не пришлось бы переименовывать старую таблицу и переносить из неё данные в новую, которую мы создали.
+~~~
+CREATE RULE orders_insert_to_more AS ON INSERT TO orders WHERE ( price > 499 ) DO INSTEAD INSERT INTO orders_more499 VALUES (NEW.*);
+CREATE RULE orders_insert_to_less AS ON INSERT TO orders WHERE ( price <= 499 ) DO INSTEAD INSERT INTO orders_less499 VALUES (NEW.*);
+~~~
 
 ## Задача 4
 
@@ -170,7 +174,11 @@ root@3eb2556da816:/vagrant/6-04-PostgreSQL/test_data# pg_dump -U postgres -d tes
 ~~~
 Для придания уникальности столбцу можно зандать уникальный index: <br>
 ~~~
-create unique index orders_title_uindex on orders (title);
+
+Например, добавить свойство UNIQUE
+
+title character varying(80) NOT NULL UNIQUE,
+
 ~~~
 
 ---
