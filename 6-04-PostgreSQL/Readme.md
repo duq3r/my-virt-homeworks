@@ -172,7 +172,7 @@ CREATE RULE orders_insert_to_less AS ON INSERT TO orders WHERE ( price <= 499 ) 
 ~~~
 root@3eb2556da816:/vagrant/6-04-PostgreSQL/test_data# pg_dump -U postgres -d test_database >test_database_dump.sql
 ~~~
-Для придания уникальности столбцу можно зандать уникальный index: <br>
+Для придания уникальности столбцу можно: <br>
 ~~~
 
 Например, добавить свойство UNIQUE
