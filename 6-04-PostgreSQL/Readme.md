@@ -172,13 +172,9 @@ CREATE RULE orders_insert_to_less AS ON INSERT TO orders WHERE ( price <= 499 ) 
 ~~~
 root@3eb2556da816:/vagrant/6-04-PostgreSQL/test_data# pg_dump -U postgres -d test_database >test_database_dump.sql
 ~~~
-Для придания уникальности столбцу можно: <br>
+Чтобы добавить уникальность значения столбца title для таблиц test_database в бэкап файл добавляем <br>
 ~~~
-
-Например, добавить свойство UNIQUE
-
-title character varying(80) NOT NULL UNIQUE,
-
+ALTER TABLE orders ADD CONSTRAINT orders_title_key UNIQUE (title);
 ~~~
 
 ---
