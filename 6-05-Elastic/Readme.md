@@ -31,7 +31,7 @@
 
 Далее мы будем работать с данным экземпляром elasticsearch.
 
-## Ответ <br>
+## Ответ 1<br>
 
 Dockerfile
 ```
@@ -116,102 +116,8 @@ curl http://localhost:9200
 При проектировании кластера elasticsearch нужно корректно рассчитывать количество реплик и шард,
 иначе возможна потеря данных индексов, вплоть до полной, при деградации системы.
 
-## Задача 3
+## Ответ задача 2<br>
 
-В данном задании вы научитесь:
-- создавать бэкапы данных
-- восстанавливать индексы из бэкапов
-
-Создайте директорию `{путь до корневой директории с elasticsearch в образе}/snapshots`.
-
-Используя API [зарегистрируйте](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-register-repository) 
-данную директорию как `snapshot repository` c именем `netology_backup`.
-
-**Приведите в ответе** запрос API и результат вызова API для создания репозитория.
-
-Создайте индекс `test` с 0 реплик и 1 шардом и **приведите в ответе** список индексов.
-
-[Создайте `snapshot`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html) 
-состояния кластера `elasticsearch`.
-
-**Приведите в ответе** список файлов в директории со `snapshot`ами.
-
-Удалите индекс `test` и создайте индекс `test-2`. **Приведите в ответе** список индексов.
-
-[Восстановите](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html) состояние
-кластера `elasticsearch` из `snapshot`, созданного ранее. 
-
-**Приведите в ответе** запрос к API восстановления и итоговый список индексов.
-
-Подсказки:
-- возможно вам понадобится доработать `elasticsearch.yml` в части директивы `path.repo` и перезапустить `elasticsearch`
-
----
-
-### Как cдавать задание
-
-Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
-
----
-
-
-# Домашнее задание к занятию "6.5. Elasticsearch"
-
-## Задача 1
-
-Dockerfile
-```
-FROM centos:7
-ENV ELASTICSEARCH_VERSION=7.12.1
-ENV ELASTICSEARCH_USER=es
-RUN adduser $ELASTICSEARCH_USER
-RUN \
-  yum install -y wget perl-Digest-SHA && \
-  yum clean all && \
-  rm -rf /var/cache
-RUN install -o $ELASTICSEARCH_USER -g $ELASTICSEARCH_USER -d /var/lib/elasticsearch
-USER $ELASTICSEARCH_USER
-WORKDIR /home/$ELASTICSEARCH_USER
-RUN \
-  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}-linux-x86_64.tar.gz && \
-  wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}-linux-x86_64.tar.gz.sha512 && \
-  shasum -a 512 -c elasticsearch-${ELASTICSEARCH_VERSION}-linux-x86_64.tar.gz.sha512 && \
-  tar -xzf elasticsearch-${ELASTICSEARCH_VERSION}-linux-x86_64.tar.gz && \
-  rm -f elasticsearch-${ELASTICSEARCH_VERSION}-linux-x86_64.tar.gz*
-RUN \
-  sed -i 's/^#node.name.*/node.name: \${NODENAME}/' elasticsearch-${ELASTICSEARCH_VERSION}/config/elasticsearch.yml && \
-  sed -i 's/^#path.data.*/path.data: \${PATHDATA}/' elasticsearch-${ELASTICSEARCH_VERSION}/config/elasticsearch.yml && \
-  echo 'http.bind_host: 0.0.0.0' >> elasticsearch-${ELASTICSEARCH_VERSION}/config/elasticsearch.yml
-ENTRYPOINT ["/bin/sh", "-c"]
-CMD ["elasticsearch-${ELASTICSEARCH_VERSION}/bin/elasticsearch"]
-```
-
-Ссылка на образ 88ee55/netology:0605
-
-curl http://localhost:9200
-```
-{
-  "name" : "netology_test",
-  "cluster_name" : "elasticsearch",
-  "cluster_uuid" : "d-sPNwfjRX6gqRpIlHmzZA",
-  "version" : {
-    "number" : "7.12.1",
-    "build_flavor" : "default",
-    "build_type" : "tar",
-    "build_hash" : "3186837139b9c6b6d23c3200870651f10d3343b7",
-    "build_date" : "2021-04-20T20:56:39.040728659Z",
-    "build_snapshot" : false,
-    "lucene_version" : "8.8.0",
-    "minimum_wire_compatibility_version" : "6.8.0",
-    "minimum_index_compatibility_version" : "6.0.0-beta1"
-  },
-  "tagline" : "You Know, for Search"
-}
-```
-
-
-  
-## Задача 2
  ```
 curl -X PUT "http://localhost:9200/ind-1" -H 'Content-Type: application/json' -d '
  {
@@ -279,6 +185,36 @@ curl -X DELETE "http://localhost:9200/ind*"
 
 ## Задача 3
 
+В данном задании вы научитесь:
+- создавать бэкапы данных
+- восстанавливать индексы из бэкапов
+
+Создайте директорию `{путь до корневой директории с elasticsearch в образе}/snapshots`.
+
+Используя API [зарегистрируйте](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#snapshots-register-repository) 
+данную директорию как `snapshot repository` c именем `netology_backup`.
+
+**Приведите в ответе** запрос API и результат вызова API для создания репозитория.
+
+Создайте индекс `test` с 0 реплик и 1 шардом и **приведите в ответе** список индексов.
+
+[Создайте `snapshot`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html) 
+состояния кластера `elasticsearch`.
+
+**Приведите в ответе** список файлов в директории со `snapshot`ами.
+
+Удалите индекс `test` и создайте индекс `test-2`. **Приведите в ответе** список индексов.
+
+[Восстановите](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html) состояние
+кластера `elasticsearch` из `snapshot`, созданного ранее. 
+
+**Приведите в ответе** запрос к API восстановления и итоговый список индексов.
+
+Подсказки:
+- возможно вам понадобится доработать `elasticsearch.yml` в части директивы `path.repo` и перезапустить `elasticsearch`
+
+## Ответ 3<br>
+
 ```
 curl -X PUT "http://localhost:9200/_snapshot/netology_backup" -H 'Content-Type: application/json' -d '
 {
@@ -329,3 +265,10 @@ curl "http://localhost:9200/_cat/indices"
 yellow open test-2 Zrfwt92RRUC9FfZTjO4ALQ 1 1 0 0 208b 208b
 green  open test   BEaUImFzSMGEhSxoFOfa8g 1 0 0 0 208b 208b
 ```
+
+---
+
+
+
+
+
