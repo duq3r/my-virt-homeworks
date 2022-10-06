@@ -31,10 +31,10 @@
 
 Далее мы будем работать с данным экземпляром elasticsearch.
 
-## Ответ 1<br>
+## Ответ 1 <br>
 
 Dockerfile
-```
+~~~
 FROM centos:7
 ENV ELASTICSEARCH_VERSION=7.12.1
 ENV ELASTICSEARCH_USER=es
@@ -58,12 +58,12 @@ RUN \
   echo 'http.bind_host: 0.0.0.0' >> elasticsearch-${ELASTICSEARCH_VERSION}/config/elasticsearch.yml
 ENTRYPOINT ["/bin/sh", "-c"]
 CMD ["elasticsearch-${ELASTICSEARCH_VERSION}/bin/elasticsearch"]
-```
+
 
 Ссылка на образ 88ee55/netology:0605
 
 curl http://localhost:9200
-```
+
 {
   "name" : "netology_test",
   "cluster_name" : "elasticsearch",
@@ -81,11 +81,10 @@ curl http://localhost:9200
   },
   "tagline" : "You Know, for Search"
 }
-```
-~~~~
-
 
 ~~~
+
+
 
 ## Задача 2
 
@@ -99,7 +98,7 @@ curl http://localhost:9200
 
 | Имя | Количество реплик | Количество шард |
 |-----|-------------------|-----------------|
-| ind-1| 0 | 1 |
+| ind-1 | 0 | 1 |
 | ind-2 | 1 | 2 |
 | ind-3 | 2 | 4 |
 
@@ -116,9 +115,9 @@ curl http://localhost:9200
 При проектировании кластера elasticsearch нужно корректно рассчитывать количество реплик и шард,
 иначе возможна потеря данных индексов, вплоть до полной, при деградации системы.
 
-## Ответ задача 2<br>
+## Ответ 2 <br>
 
- ```
+~~~
 curl -X PUT "http://localhost:9200/ind-1" -H 'Content-Type: application/json' -d '
  {
   "settings" : {
@@ -127,8 +126,7 @@ curl -X PUT "http://localhost:9200/ind-1" -H 'Content-Type: application/json' -d
   }
 }
 '
-```
-```
+
 curl -X PUT "http://localhost:9200/ind-2" -H 'Content-Type: application/json' -d '
  {
   "settings" : {
@@ -137,8 +135,7 @@ curl -X PUT "http://localhost:9200/ind-2" -H 'Content-Type: application/json' -d
   }
 }
 '
-```
-```
+
 curl -X PUT "http://localhost:9200/ind-3" -H 'Content-Type: application/json' -d '
  {
   "settings" : {
@@ -147,7 +144,7 @@ curl -X PUT "http://localhost:9200/ind-3" -H 'Content-Type: application/json' -d
   }
 }
 '
-```
+~~~
 
 curl "http://localhost:9200/_cat/indices"
 ```
@@ -182,7 +179,6 @@ curl "http://localhost:9200/_cluster/health?pretty=true"
 ```
 curl -X DELETE "http://localhost:9200/ind*"
 ```
-
 ## Задача 3
 
 В данном задании вы научитесь:
@@ -213,9 +209,9 @@ curl -X DELETE "http://localhost:9200/ind*"
 Подсказки:
 - возможно вам понадобится доработать `elasticsearch.yml` в части директивы `path.repo` и перезапустить `elasticsearch`
 
-## Ответ 3<br>
+## Ответ 3 
 
-```
+~~~
 curl -X PUT "http://localhost:9200/_snapshot/netology_backup" -H 'Content-Type: application/json' -d '
 {
   "type": "fs",
@@ -226,8 +222,7 @@ curl -X PUT "http://localhost:9200/_snapshot/netology_backup" -H 'Content-Type: 
 '
 
 {"acknowledged":true}
-```
-```
+
 curl -X PUT "http://localhost:9200/test" -H 'Content-Type: application/json' -d '
  {
   "settings" : {
@@ -239,32 +234,28 @@ curl -X PUT "http://localhost:9200/test" -H 'Content-Type: application/json' -d 
 
 curl "http://localhost:9200/_cat/indices"
 green open test J27BUVtMSA28DqCjC5XjKw 1 0 0 0 208b 208b
-```
 
-```
+
 curl -X PUT "http://localhost:9200/_snapshot/netology_backup/snapshot_1"
-```
-```
+
 index-0
 index.latest
 indices
 meta-aUP4Ud66RjOyNJkcYj6tcw.dat
 snap-aUP4Ud66RjOyNJkcYj6tcw.dat
-```
 
-```
+
 curl -X DELETE "http://localhost:9200/test"
 curl -X PUT "http://localhost:9200/test-2"
 curl "http://localhost:9200/_cat/indices"
 yellow open test-2 Zrfwt92RRUC9FfZTjO4ALQ 1 1 0 0 208b 208b
-```
-```
+
 curl -X POST "http://localhost:9200/_snapshot/netology_backup/snapshot_1/_restore"
 curl "http://localhost:9200/_cat/indices"
 
 yellow open test-2 Zrfwt92RRUC9FfZTjO4ALQ 1 1 0 0 208b 208b
 green  open test   BEaUImFzSMGEhSxoFOfa8g 1 0 0 0 208b 208b
-```
+~~~
 
 ---
 
