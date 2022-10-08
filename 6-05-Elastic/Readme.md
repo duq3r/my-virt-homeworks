@@ -58,10 +58,10 @@ RUN \
   echo 'http.bind_host: 0.0.0.0' >> elasticsearch-${ELASTICSEARCH_VERSION}/config/elasticsearch.yml
 ENTRYPOINT ["/bin/sh", "-c"]
 CMD ["elasticsearch-${ELASTICSEARCH_VERSION}/bin/elasticsearch"]
-
+~~~
 
 Ссылка на образ duq3r/elastic
-
+~~~
 curl http://localhost:9200
 
 {
