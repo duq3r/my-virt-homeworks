@@ -60,7 +60,7 @@ ENTRYPOINT ["/bin/sh", "-c"]
 CMD ["elasticsearch-${ELASTICSEARCH_VERSION}/bin/elasticsearch"]
 
 
-Ссылка на образ 88ee55/netology:0605
+Ссылка на образ duq3r/elastic
 
 curl http://localhost:9200
 
