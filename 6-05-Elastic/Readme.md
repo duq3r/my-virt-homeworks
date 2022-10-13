@@ -232,7 +232,7 @@ curl -X PUT "http://localhost:9200/test" -H 'Content-Type: application/json' -d 
 }
 '
 
-curl "http://localhost:9200/_cat/indices"
+curl "http://localhost:9200/_cat/indice"
 green open test J27BUVtMSA28DqCjC5XjKw 1 0 0 0 208b 208b
 
 
