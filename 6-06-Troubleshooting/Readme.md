@@ -78,14 +78,12 @@ db.collection_name.find(<query_string>).maxTimeMS(<time_limit>)
 <br>
 *Для диагностики блокировок можно включить функцию мониторинга блокировок.
 <br>
-```
 CONFIG SET watchdog-period 500
-<br>```
+<br>
 После диагностики выключить 
 <br>
-```
 CONFIG SET watchdog-period 0
-```
+
 
 
 
