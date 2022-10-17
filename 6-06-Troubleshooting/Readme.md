@@ -154,7 +154,7 @@ InterfaceError: (InterfaceError) 2013: Lost connection to MySQL server during qu
 
 ### Как бы вы решили данную проблему?
 
-Попробовал бы различные варианты настроек параметров:
+Попробовал бы различные варианты настроек параметров работы с памятью Postgres:
 <b>max_connections, shared_buffer, work_mem, effective_cache_size, maintenance_work_mem.</b>
 
 shared_buffer - этот параметр устанавливает, сколько выделенной памяти будет использоваться PostgreSQL для кеширования.
