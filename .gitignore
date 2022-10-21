@@ -1,3 +1,13 @@
 .vscode/settings.json
 2-lesson/src/vagrant/.*/*
 
+7-02-terraform-1/src/.terraform.lock.hcl
+7-02-terraform-1/src/.terraform/environment
+7-02-terraform-1/src/.terraform/modules/modules.json
+7-02-terraform-1/src/.terraform/providers/registry.terraform.io/yandex-cloud/yandex/0.61.0/darwin_arm64/CHANGELOG.md
+7-02-terraform-1/src/.terraform/providers/registry.terraform.io/yandex-cloud/yandex/0.61.0/darwin_arm64/LICENSE
+7-02-terraform-1/src/.terraform/providers/registry.terraform.io/yandex-cloud/yandex/0.61.0/darwin_arm64/README.md
+7-02-terraform-1/src/.terraform/providers/registry.terraform.io/yandex-cloud/yandex/0.61.0/darwin_arm64/terraform-provider-yandex_v0.61.0
+7-02-terraform-1/src/terraform.tfstate.d/stage/.terraform.tfstate.lock.info
+7-02-terraform-1/src/terraform.tfstate.d/stage/terraform.tfstate
+7-02-terraform-1/src/terraform.tfstate.d/stage/terraform.tfstate.backup
