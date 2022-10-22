@@ -48,7 +48,8 @@ dynamodb.
 
 В виде результата работы пришлите:
 * Вывод команды `terraform workspace list`.
-  <br> ## Ответ  ![image](https://prnt.sc/fD00HEanXbK9) <img src="[Isolated.png](https://prnt.sc/fD00HEanXbK9)" alt="isolated" width="300"/>
+  <br> ## Ответ  ![image](https://prnt.sc/fD00HEanXbK9) 
+  <img src="[Isolated.png]https://prnt.sc/fD00HEanXbK9"  width="300"/>
 * Вывод команды `terraform plan` для воркспейса `prod`.  
 
 ---
