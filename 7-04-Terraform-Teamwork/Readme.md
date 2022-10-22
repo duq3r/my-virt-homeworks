@@ -36,8 +36,8 @@
 
 В качестве результата приложите ссылку на файлы `server.yaml` и `atlantis.yaml`.    
 >**Ответ:**    
->https://github.com/Dok-dev/devops-netology/tree/main/hw-07.4_Terraform-4-teamwork/server.yaml    
->https://github.com/Dok-dev/devops-netology/tree/main/hw-07.4_Terraform-4-teamwork/atlantis.yaml
+>https://github.com/duq3r/my-virt-homeworks/tree/main/7-04-Terraform-Teamwork/src/server.yaml    
+>https://github.com/duq3r/my-virt-homeworks/tree/main/7-04-Terraform-Teamwork/src/atlantis.yaml
 
 ---
 
@@ -52,4 +52,4 @@
 
 В качестве результата задания приложите ссылку на созданный блок конфигураций. 
 >**Ответ:**    
->https://g
+>https://ghttps://github.com/duq3r/my-virt-homeworks/tree/main/7-04-Terraform-Teamwork/src/
