@@ -11,3 +11,15 @@
 7-02-terraform-1/src/terraform.tfstate.d/stage/.terraform.tfstate.lock.info
 7-02-terraform-1/src/terraform.tfstate.d/stage/terraform.tfstate
 7-02-terraform-1/src/terraform.tfstate.d/stage/terraform.tfstate.backup
+7-02-terraform-1/src/key.json
+7-03-Terraform/src/.terraform/environment
+7-03-Terraform/src/.terraform/terraform.tfstate
+7-03-Terraform/src/.terraform/modules/modules.json
+7-03-Terraform/src/.terraform/providers/registry.terraform.io/yandex-cloud/yandex/0.61.0/darwin_arm64/CHANGELOG.md
+7-03-Terraform/src/.terraform/providers/registry.terraform.io/yandex-cloud/yandex/0.61.0/darwin_arm64/LICENSE
+7-03-Terraform/src/.terraform/providers/registry.terraform.io/yandex-cloud/yandex/0.61.0/darwin_arm64/README.md
+7-03-Terraform/src/.terraform/providers/registry.terraform.io/yandex-cloud/yandex/0.61.0/darwin_arm64/terraform-provider-yandex_v0.61.0
+7-02-terraform-1/src/.terraform/terraform.tfstate
+.gitignore
+7-03-Terraform/src/key.json
+7-03-Terraform/src/.terraform.lock.hcl

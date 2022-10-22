@@ -10,6 +10,26 @@
 [здесь](https://www.terraform.io/docs/backends/types/s3.html).
 1. Зарегистрируйте бэкэнд в терраформ проекте как описано по ссылке выше. 
 
+## Ответ 1 <br>
+
+Зарегистрировать бакет в яндексе.
+~~~
+terraform {
+  backend "s3" {
+    endpoint   = "storage.yandexcloud.net"
+    bucket     = "test-bucket2344242"
+    region     = "ru-central1"
+    key        = "test-bucket/remote-state.tfstate"
+    access_key = "YCAJEv***********************" #ID
+    secret_key = "YCPXYCOR46e6m3e-***************************-N5zO"
+
+    skip_region_validation      = true
+    skip_credentials_validation = true
+  }
+
+}
+~~~
+
 
 ## Задача 2. Инициализируем проект и создаем воркспейсы. 
 
@@ -28,6 +48,7 @@ dynamodb.
 
 В виде результата работы пришлите:
 * Вывод команды `terraform workspace list`.
+  <br> ## Ответ  ![image](https://prnt.sc/fD00HEanXbK9) <img src="[Isolated.png](https://prnt.sc/fD00HEanXbK9)" alt="isolated" width="300"/>
 * Вывод команды `terraform plan` для воркспейса `prod`.  
 
 ---
