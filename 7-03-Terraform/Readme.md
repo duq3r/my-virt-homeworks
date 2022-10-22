@@ -48,10 +48,11 @@ dynamodb.
 
 В виде результата работы пришлите:
 * Вывод команды `terraform workspace list`.
-  <br> ## Ответ 
+  <br> ## Ответ <br>
   <img src="screen.png"  width="900"/>
 * Вывод команды `terraform plan` для воркспейса `prod`.  
-  ~~~
+  
+  ```yaml
   > $ terraform plan                                                                   ⬡ none [±main ●●]
 module.vpc.data.yandex_compute_image.nat_instance: Reading...
 module.vpc.data.yandex_compute_image.nat_instance: Read complete after 3s [id=fd8tim6r7u5dqa0q5pq5]
@@ -741,6 +742,7 @@ Plan: 7 to add, 0 to change, 0 to destroy.
 
 Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly
 these actions if you run "terraform apply" now.
-~~~
+
+```
 
 ---
