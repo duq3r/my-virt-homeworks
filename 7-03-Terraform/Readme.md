@@ -56,7 +56,7 @@ dynamodb.
   > $ terraform plan                                                                   ⬡ none [±main ●●]
  ```
 
- ```
+ ```yml
 module.vpc.data.yandex_compute_image.nat_instance: Reading...
 module.vpc.data.yandex_compute_image.nat_instance: Read complete after 3s [id=fd8tim6r7u5dqa0q5pq5]
 
