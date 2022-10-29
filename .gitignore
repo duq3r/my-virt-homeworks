@@ -23,3 +23,4 @@
 .gitignore
 7-03-Terraform/src/key.json
 7-03-Terraform/src/.terraform.lock.hcl
+7-02-terraform-1/src/terraform.tfvars

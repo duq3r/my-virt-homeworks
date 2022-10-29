@@ -56,7 +56,7 @@ package main
  var x = []int{48,96,86,68,57,82,63,70,37,34,83,27,19,97,9,17}
  
  func Min(values []int) int {
- 	min_value := values[0]
+ 	min_value := values[0] #Присваиваем min_value значению 1 элемента массива
  	for _, n := range values {
  		if n < min_value {
  			min_value = n
@@ -83,43 +83,12 @@ import (
 	"fmt"
 )
 
-func printD3(value1 int, value2 int) {
-	for ;value1 < value2; {
-		if (value1 % 3) == 0 {
-			fmt.Print(value1,", ")
-			value1 = value1 + 2
-		}
-		value1++
-	}
-}
-
-func main() {
-
-	printD3(1,100)
-
-}
-```
----
-
-## Задача 4. Протестировать код (не обязательно).
-
-Создайте тесты для функций из предыдущего задания. 
-
->**Ответ:**   
->Немного преобразуем код предыдущего зания, что бы получать массив для проверки. 
-```go
-package main
-
-import (
-	"fmt"
-)
-
-func PrintD3(value1 int, value2 int) []int {
+func PrintDevBy3(value1 int, value2 int) []int {
 	var nums []int
-	for ;value1 < value2; {
+	for value1 < value2 {
 		if (value1 % 3) == 0 {
-			nums = append(nums, value1)
-			value1 = value1 + 2
+			fmt.Print(value1, " ")
+			value1 = value1 + 2         //Прошагивает 2 числа, чтобы зря их не проверять
 		}
 		value1++
 	}
@@ -128,28 +97,16 @@ func PrintD3(value1 int, value2 int) []int {
 
 func main() {
 
-	fmt.Print(PrintD3(1,100))
+	PrintDevBy3(1, 100)
 
 }
+
 ```
+---
 
-Теперь сделаем тест для проверки работы функции PrintD3:
-```go
-package main
+## Задача 4. Протестировать код (не обязательно).
 
-import "testing"
+Не делал.
 
-func TestPrintD3(t *testing.T) {
-
-	testRange := PrintD3(-110,110)
-
-	for _, n := range testRange {
-		r := n % 3
-		if r > 0 {
-			t.Error("There is an indivisible by 3 number - ", n)
-		}
-	}
-}
-```
 
 ---
