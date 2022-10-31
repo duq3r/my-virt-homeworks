@@ -13,8 +13,8 @@
 1. Выполните plan и apply. 
 
 В качестве результата задания приложите снимок экрана с успешным применением конфигурации.    
->**Ответ:**    
-![1](1.png)
+## Ответ: <br>    
+не делал.
 
 ---
 
@@ -35,7 +35,7 @@
 1. Необходимо включить автопланирование при изменении любых файлов `*.tf`.
 
 В качестве результата приложите ссылку на файлы `server.yaml` и `atlantis.yaml`.    
->**Ответ:**    
+## Ответ: <br>   
 >https://github.com/duq3r/my-virt-homeworks/tree/main/7-04-Terraform-Teamwork/src/server.yaml    
 >https://github.com/duq3r/my-virt-homeworks/tree/main/7-04-Terraform-Teamwork/src/atlantis.yaml
 
